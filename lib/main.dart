@@ -200,7 +200,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: SizedBox(
-        height: 55.0,
+        height: 55.0 + MediaQuery.of(context).padding.bottom,
         child: Material(
           color: Colors.white,
           elevation: 8.0,
@@ -208,6 +208,7 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.symmetric(horizontal: 4.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 IconButton(
                   icon: Icon(Icons.menu, color: Colors.grey[700]),
@@ -220,7 +221,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () {
                     buildOptionSheet();
                   },
-                )
+                ),
               ],
             ),
           ),
@@ -239,77 +240,80 @@ class _MyHomePageState extends State<MyHomePage> {
             color: Colors.white,
             borderRadius:
                 const BorderRadius.vertical(top: Radius.circular(6.0)),
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 20.0, top: 25.0, bottom: 10.0),
-                    child: Text(
-                      "Sortieren nach",
-                      style: TextStyle(
-                        fontSize: 14.0,
-                        color: Colors.grey[800],
-                      ),
-                    ),
-                  ),
-                  const ListTile(
-                    trailing: Icon(Icons.check),
-                    title: Padding(
-                      padding: EdgeInsets.only(left: 12.0),
+            child: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 20.0, top: 25.0, bottom: 10.0),
                       child: Text(
-                        "Meine Reihenfolge",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  const ListTile(
-                    title: Padding(
-                      padding: EdgeInsets.only(left: 12.0),
-                      child: Text(
-                        "Datum",
-                        style: TextStyle(),
-                      ),
-                    ),
-                  ),
-                  const Divider(),
-                  Flex(
-                    direction: Axis.vertical,
-                    children: <Widget>[
-                      const ListTile(
-                        title: Text(
-                          "Liste umbenennen",
-                          style: TextStyle(fontSize: 15.0),
+                        "Sortieren nach",
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.grey[800],
                         ),
                       ),
-                      const ListTile(
-                        title: Text(
-                          "Liste löschen",
-                          style: TextStyle(fontSize: 15.0, color: Colors.grey),
+                    ),
+                    const ListTile(
+                      trailing: Icon(Icons.check),
+                      title: Padding(
+                        padding: EdgeInsets.only(left: 12.0),
+                        child: Text(
+                          "Meine Reihenfolge",
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
-                      ListTile(
-                        onTap: did.isEmpty
-                            ? null
-                            : () {
-                                setState(() {
-                                  did = [];
-                                  Navigator.of(context).pop();
-                                });
-                              },
-                        title: Text(
-                          "Alle erledigten Aufgaben löschen",
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            color: did.isEmpty ? Colors.grey : Colors.black,
+                    ),
+                    const ListTile(
+                      title: Padding(
+                        padding: EdgeInsets.only(left: 12.0),
+                        child: Text(
+                          "Datum",
+                          style: TextStyle(),
+                        ),
+                      ),
+                    ),
+                    const Divider(),
+                    Flex(
+                      direction: Axis.vertical,
+                      children: <Widget>[
+                        const ListTile(
+                          title: Text(
+                            "Liste umbenennen",
+                            style: TextStyle(fontSize: 15.0),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                        const ListTile(
+                          title: Text(
+                            "Liste löschen",
+                            style:
+                                TextStyle(fontSize: 15.0, color: Colors.grey),
+                          ),
+                        ),
+                        ListTile(
+                          onTap: did.isEmpty
+                              ? null
+                              : () {
+                                  setState(() {
+                                    did = [];
+                                    Navigator.of(context).pop();
+                                  });
+                                },
+                          title: Text(
+                            "Alle erledigten Aufgaben löschen",
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              color: did.isEmpty ? Colors.grey : Colors.black,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -391,7 +395,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     ],
                   ),
                 ),
-                SizedBox(height: MediaQuery.of(context).viewInsets.bottom)
               ],
             ),
           ),
@@ -408,17 +411,21 @@ class _MyHomePageState extends State<MyHomePage> {
           Expanded(child: Container()),
           Material(
             color: Colors.white,
-            child: Column(
-              children: <Widget>[
-                const SizedBox(height: 8.0),
-                ListTile(
+            child: SafeArea(
+              child: Column(
+                children: <Widget>[
+                  const SizedBox(height: 8.0),
+                  ListTile(
                     leading: const CircleAvatar(
-                        radius: 24.0,
-                        child: Text(
-                          "M",
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
-                        )),
+                      radius: 24.0,
+                      child: Text(
+                        "M",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
                     title: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -426,74 +433,87 @@ class _MyHomePageState extends State<MyHomePage> {
                         const Text(
                           "Max Mustermann",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Product Sans',
-                              fontSize: 14.0),
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Product Sans',
+                            fontSize: 14.0,
+                          ),
                         ),
                         Row(
                           children: <Widget>[
                             Text(
                               "example@gmail.com",
                               style: TextStyle(
-                                  color: Colors.grey[700], fontSize: 14.0),
+                                color: Colors.grey[700],
+                                fontSize: 14.0,
+                              ),
                             ),
                             const Icon(Icons.keyboard_arrow_down)
                           ],
                         )
                       ],
-                    )),
-                const Divider(),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      left: 20.0, top: 10.0, bottom: 10.0),
-                  child: Container(
-                    height: 55.0,
-                    decoration: BoxDecoration(
+                    ),
+                  ),
+                  const Divider(),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 20.0,
+                      top: 10.0,
+                      bottom: 10.0,
+                    ),
+                    child: Container(
+                      height: 55.0,
+                      decoration: BoxDecoration(
                         color: Theme.of(context).accentColor.withOpacity(0.2),
                         borderRadius: const BorderRadius.horizontal(
-                            left: Radius.circular(30.0))),
-                    child: Align(
+                          left: Radius.circular(30.0),
+                        ),
+                      ),
+                      child: Align(
                         alignment: Alignment.centerLeft,
                         child: Padding(
                           padding: const EdgeInsets.only(left: 16.0),
                           child: Text(
                             "Meine Aufgaben",
                             style: TextStyle(
-                                color: Theme.of(context).accentColor,
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.bold),
+                              color: Theme.of(context).accentColor,
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        )),
-                  ),
-                ),
-                const Divider(),
-                const ListTile(
-                    leading: Icon(Icons.add),
-                    title: Text("Neue Liste erstellen")),
-                const Divider(),
-                const ListTile(
-                    leading: Icon(Icons.feedback),
-                    title: Text("Feedback geben")),
-                const Divider(),
-                const ListTile(title: Text("Open Source-Lizenzen")),
-                const Divider(),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 12.0, top: 4.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const <Widget>[
-                      Text("Datenschutzerklärung"),
-                      SizedBox(width: 8.0),
-                      Icon(
-                        Icons.brightness_1,
-                        size: 2.0,
+                        ),
                       ),
-                      SizedBox(width: 8.0),
-                      Text("Nutzungsbedingungen")
-                    ],
+                    ),
                   ),
-                ),
-              ],
+                  const Divider(),
+                  const ListTile(
+                      leading: Icon(Icons.add),
+                      title: Text("Neue Liste erstellen")),
+                  const Divider(),
+                  const ListTile(
+                    leading: Icon(Icons.feedback),
+                    title: Text("Feedback geben"),
+                  ),
+                  const Divider(),
+                  const ListTile(title: Text("Open Source-Lizenzen")),
+                  const Divider(),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 12.0, top: 4.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const <Widget>[
+                        Text("Datenschutzerklärung"),
+                        SizedBox(width: 8.0),
+                        Icon(
+                          Icons.brightness_1,
+                          size: 2.0,
+                        ),
+                        SizedBox(width: 8.0),
+                        Text("Nutzungsbedingungen")
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
