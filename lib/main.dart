@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Padding(
             padding: const EdgeInsets.only(right: 60.0),
             child: Text("Meine Aufgaben",
-                style: TextStyle(fontSize: 32.0, fontFamily: 'Circular')),
+                style: TextStyle(fontSize: 32.0, fontFamily: 'Product Sans')),
           ),
           todo.length < 1 && did.length < 1
               ? Expanded(
@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Text(
                       "Ein neuer Anfang",
                       style: TextStyle(
-                          fontFamily: 'Circular',
+                          fontFamily: 'Product Sans',
                           fontSize: 18.0,
                           letterSpacing: -0.4),
                     ),
@@ -123,7 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                   did.length.toString() +
                                                   ")",
                                               style: TextStyle(
-                                                  fontFamily: 'Circular',
+                                                  fontFamily: 'Product Sans',
                                                   fontWeight: FontWeight.bold),
                                             ),
                                             children: did
@@ -173,7 +173,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Text(
                   "Neue Aufgabe hinzufügen",
                   style: TextStyle(
-                    fontFamily: 'Circular',
+                    fontFamily: 'Product Sans',
                     fontSize: 16.0,
                   ),
                 )
@@ -313,7 +313,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         controller: controller,
                         autofocus: true,
                         style: TextStyle(
-                            fontFamily: 'Circular',
+                            fontFamily: 'Product Sans',
                             color: Colors.black,
                             fontSize: 18.0),
                         decoration: InputDecoration(
@@ -353,7 +353,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 "Speichern",
                                 style: TextStyle(
                                     color: Theme.of(context).accentColor,
-                                    fontFamily: 'Circular',
+                                    fontFamily: 'Product Sans',
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16.0),
                               ),
@@ -397,7 +397,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 "Max Mustermann",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    fontFamily: 'Circular',
+                                    fontFamily: 'Product Sans',
                                     fontSize: 14.0),
                               ),
                               Row(
@@ -420,8 +420,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: Container(
                           height: 55.0,
                           decoration: BoxDecoration(
-                              color: Theme
-                                  .of(context)
+                              color: Theme.of(context)
                                   .accentColor
                                   .withOpacity(0.2),
                               borderRadius: BorderRadius.horizontal(
