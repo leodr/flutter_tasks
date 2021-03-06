@@ -75,7 +75,7 @@ create a pull request!
 
 <p align="center">
     <sub>
-        Project by Leo Driesch, released under <a href="https://github.com/leodr/quice/blob/main/LICENSE">MIT license</a>.
+        Project by Leo Driesch, released under <a href="https://github.com/leodr/flutter_tasks/blob/main/LICENSE">MIT license</a>.
     </sub>
 </p>
 <p align="center">
