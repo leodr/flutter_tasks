@@ -1,5 +1,5 @@
 name: flutter_tasks
-description: A Flutter clone of the Google Tasks app design.
+description: A rough clone of the Google Tasks app with Flutter.
 publish_to: "none"
 
 version: 1.0.0+1
