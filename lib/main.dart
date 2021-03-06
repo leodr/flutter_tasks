@@ -363,6 +363,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           Icons.add_circle,
                           color: Theme.of(context).accentColor,
                         ),
+                        onPressed: () {},
                       ),
                       FlatButton(
                         splashColor: Colors.transparent,
