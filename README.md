@@ -23,10 +23,11 @@
 
 ---
 
-This Flutter is a rough clone of a version of the Google Tasks application.
+This Flutter app is a rough clone of an earlier version of the Google Tasks
+application.
 
-And I know it all lives in one file that is way too long, but it is just a demo
-for fun. I don't write code like that in production :wink:.
+And I know it all lives in one file that is way too long, but this is just a
+demo.
 
 <br>
 
